@@ -95,41 +95,44 @@ graph TD
 
 
 ### 5. Программа
-import java.util.Arrays;
 import java.util.Scanner;
-public class RhombusChecker 
+
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] distances = new int[6];
-        System.out.println("Введите шесть натуральных чисел (расстояний между точками):");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int d = scanner.nextInt();
+        int e = scanner.nextInt();
+        int f = scanner.nextInt();
+        int[] distances = {a, b, c, d, e, f};
         for (int i = 0; i < 6; i++) {
-            while (true) {
-                System.out.print("Введите расстояние " + (i + 1) + ": ");
-                if (scanner.hasNextInt()) {
-                    int dist = scanner.nextInt();
-                    if (dist > 0) {
-                        distances[i] = dist;
-                        break;
-                    } else {
-                        System.out.println("Ошибка: Введите натуральное число (больше 0).");
-                    }
-                } else {
-                    System.out.println("Ошибка: Введите целое число.");
-                    scanner.next();
+            for (int j = 0; j < 5 - i; j++) {
+                if (distances[j] > distances[j + 1]) {
+                    int temp = distances[j];
+                    distances[j] = distances[j + 1];
+                    distances[j + 1] = temp;
                 }
             }
         }
-        scanner.close();
-        Arrays.sort(distances);
-        boolean isRhombus = false;
-        if (distances[0] > 0 &&
-                distances[0] == distances[1] &&
-                distances[1] == distances[2] &&
-                distances[2] == distances[3] &&
-                distances[4] == distances[5]) {
-            isRhombus = true;
+        boolean sidesEqual = true;
+        for (int i = 1; i < 4; i++) {
+            if (distances[i] != distances[0]) {
+                sidesEqual = false;
+                break;
+            }
         }
-        if (isRhombus) {
+        boolean diagonalsEqual = (distances[4] == distances[5]);
+        boolean diagonalsNotSides = (distances[0] != distances[4]);
+        boolean allSame = true;
+        for (int i = 1; i < 6; i++) {
+            if (distances[i] != distances[0]) {
+                allSame = false;
+                break;
+            }
+        }
+        if (sidesEqual && diagonalsEqual && diagonalsNotSides && !allSame) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
