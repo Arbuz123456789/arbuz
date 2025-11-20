@@ -121,7 +121,6 @@ public class Main {
         for (int i = 1; i < 4; i++) {
             if (distances[i] != distances[0]) {
                 sidesEqual = false;
-                break;
             }
         }
         boolean diagonalsEqual = (distances[4] == distances[5]);
