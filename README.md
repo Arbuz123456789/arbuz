@@ -127,13 +127,8 @@ public class Main {
         boolean diagonalsEqual = (distances[4] == distances[5]);
         boolean diagonalsNotSides = (distances[0] != distances[4]);
         boolean allSame = true;
-        for (int i = 1; i < 6; i++) {
-            if (distances[i] != distances[0]) {
-                allSame = false;
-                break;
-            }
-        }
-        if (sidesEqual && diagonalsEqual && diagonalsNotSides && !allSame) {
+     
+        if (sidesEqual && diagonalsEqual && diagonalsNotSides ) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
