@@ -81,12 +81,12 @@ graph TD
     A[Начало] --> B[/Ввести 6 натуральных чисел/];
     B --> C{Все числа > 0?};
     C -- Нет --> B;
-    C -- Да --> D[Сохранить числа в массив distances[6]];
-    D --> E[Отсортировать distances по возрастанию];
-    E --> F{distances[0] == distances[1] && distances[1] == distances[2] && distances[2] == distances[3]};
-    F -- Да --> G{distances[4] == distances[5]};
+    C -- Да --> D["Сохранить числа в массив distances[6]"];
+    D --> E["Отсортировать distances по возрастанию"];
+    E --> F{"distances[0] == distances[1] && distances[1] == distances[2] && distances[2] == distances[3]"};
+    F -- Да --> G{"distances[4] == distances[5]"};
     F -- Нет --> H[/Вывод: NO/];
-    G -- Да --> I{distances[0] > 0};
+    G -- Да --> I{"distances[0] > 0"};
     G -- Нет --> H;
     I -- Да --> J[/Вывод: YES/];
     I -- Нет --> H;
